@@ -1,73 +1,165 @@
-# Welcome to your Lovable project
+# ☕ ASFEPA Agro Sostenible — Sitio Web Oficial
 
-## Project info
+Sitio web institucional de **ASFEPA** (Asociación de Familias Emprendedoras Productoras Agrosostentables), organización de productores de **café de especialidad** ubicados en Felipe Pinglo Alva, Luyando, **Huánuco – Perú**, a altitudes de 1,500 a 1,800 msnm.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+🌐 **Demo en vivo:** [https://recursosprogramadores.github.io/asfepa-agro-sostenible](https://recursosprogramadores.github.io/asfepa-agro-sostenible)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 📋 Descripción del Proyecto
 
-**Use Lovable**
+Esta plataforma web presenta los productos, la historia y los valores de ASFEPA. Permite a potenciales compradores e interesados conocer:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- Los **cafés de especialidad** producidos (Pergamino, Oro Verde, Tostado y Tostado & Molido).
+- La **historia y misión** de la asociación y sus familias productoras.
+- Una **galería visual** del proceso de producción y los productos.
+- Información de **contacto directo** para coordinar pedidos.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🗂️ Páginas
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+| Ruta | Descripción |
+|---|---|
+| `/` | Inicio — Hero, estadísticas, resumen de productos y testimonios |
+| `/nosotros` | Historia, Misión & Visión, valores de la asociación |
+| `/productos` | Catálogo completo con fichas técnicas y precios |
+| `/contacto` | Formulario de contacto e información de comunicación |
+| `/terminos` | Términos y condiciones |
+| `/privacidad` | Política de privacidad |
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 🛒 Productos
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+| Producto | Precio | Presentación |
+|---|---|---|
+| Café Pergamino Seco | Según bolsa de valores | Sacos 50 kg |
+| Café Oro Verde | Según bolsa de valores | Sacos 50 kg |
+| Café Tostado 1 KG | S/. 55.00 | Bolsa trilaminada |
+| Café Tostado y Molido 1 KG | S/. 60.00 | Bolsa trilaminada |
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+> Variedades: Geisha · Caturra · Catuaí · Catimor · Obata Rojo  
+> Puntuación SCA: 80 – 85 puntos
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## 🛠️ Stack Tecnológico
+
+| Tecnología | Uso |
+|---|---|
+| **React 18** + **TypeScript** | Framework principal y tipado estático |
+| **Vite** | Bundler y servidor de desarrollo |
+| **Tailwind CSS** | Sistema de diseño utilitario |
+| **shadcn/ui** + **Radix UI** | Componentes de interfaz accesibles |
+| **React Router DOM v6** | Enrutamiento cliente |
+| **Lenis** | Scroll suave y cinematográfico |
+| **React Hook Form** + **Zod** | Formularios con validación robusta |
+| **React Helmet Async** | Gestión de SEO y metaetiquetas |
+| **gh-pages** | Despliegue en GitHub Pages |
+
+---
+
+## 🗃️ Estructura del Proyecto
+
+```
+asfepa-agro-sostenible/
+├── public/                  # Archivos estáticos públicos
+├── src/
+│   ├── assets/              # Imágenes de productos y fondos
+│   ├── components/          # Componentes reutilizables de la UI
+│   │   ├── ui/              # Componentes base de shadcn/ui
+│   │   ├── Hero.tsx         # Sección principal con estadísticas animadas
+│   │   ├── Productos.tsx    # Catálogo con modal de detalle técnico
+│   │   ├── Galeria.tsx      # Galería de imágenes
+│   │   ├── Historia.tsx     # Historia de la asociación
+│   │   ├── Contacto.tsx     # Formulario de contacto
+│   │   ├── Header.tsx       # Navegación principal
+│   │   ├── Footer.tsx       # Pie de página con enlaces
+│   │   └── WhatsAppButton.tsx # Botón flotante de WhatsApp
+│   ├── data/                # Datos desacoplados de la UI
+│   │   ├── productos.ts     # Catálogo de productos con fichas técnicas
+│   │   ├── testimonios.ts   # Testimonios de clientes
+│   │   └── navigation.ts   # Links de navegación
+│   ├── pages/               # Páginas de la aplicación
+│   ├── hooks/               # Custom hooks
+│   ├── lib/                 # Utilidades (cn, etc.)
+│   ├── App.tsx              # Enrutador principal con scroll suave
+│   └── main.tsx             # Punto de entrada
+├── index.html
+├── package.json
+├── tailwind.config.ts
+└── vite.config.ts
+```
+
+---
+
+## 🚀 Instalación y Desarrollo Local
+
+**Requisitos:** Node.js 18+ y npm (o bun)
+
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/recursosprogramadores/asfepa-agro-sostenible.git
+cd asfepa-agro-sostenible
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Iniciar servidor de desarrollo
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+El sitio estará disponible en `http://localhost:5173`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 📦 Scripts Disponibles
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run dev        # Servidor de desarrollo con hot-reload
+npm run build      # Compilar para producción
+npm run preview    # Previsualizar el build de producción
+npm run lint       # Analizar código con ESLint
+npm run deploy     # Publicar en GitHub Pages (build + gh-pages)
+```
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🌍 Despliegue en GitHub Pages
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+El proyecto se despliega automáticamente en [GitHub Pages](https://pages.github.com/) con:
 
-## How can I deploy this project?
+```bash
+npm run deploy
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Este comando ejecuta `npm run build` y luego publica la carpeta `dist/` en la rama `gh-pages`.
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes, you can!
+## ✨ Características Destacadas
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Scroll suave** con Lenis para una experiencia cinematográfica.
+- **Animaciones de entrada** mediante IntersectionObserver (`.reveal`, `.reveal-stagger`).
+- **Números animados** en las estadísticas del Hero al entrar en vista.
+- **Preloader** animado al cargar la página.
+- **Modal de producto** con carrusel de imágenes y ficha técnica completa.
+- **Botón flotante de WhatsApp** para contacto directo.
+- **Totalmente responsivo** — optimizado para móvil, tablet y escritorio.
+- **SEO ready** con React Helmet Async.
+- **Accesible** con componentes Radix UI y atributos ARIA.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+## 📍 Origen
+
+> **Felipe Pinglo Alva, Luyando, Huánuco — Perú**  
+> Altitud: 1,500 – 1,800 msnm  
+> Proceso: Cosecha selectiva, fermentación controlada (aeróbica y anaeróbica), secado solar
+
+---
+
+## 📄 Licencia
+
+Proyecto privado de **ASFEPA**. Todos los derechos reservados © 2024.
