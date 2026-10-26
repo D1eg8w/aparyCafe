@@ -23,8 +23,8 @@ const contactLinks = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "https://facebook.com/asfepa", label: "Facebook" },
-  { icon: Instagram, href: "https://instagram.com/asfepa", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/1apary", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/apary_cafe86?utm_source=ig_web_button_share_sheet&cplk=ZDNlZDc0MzIxNw==", label: "Instagram" },
   { icon: whatsappIcon, href: "https://wa.me/51930572244", label: "WhatsApp", isImage: true },
 ];
 

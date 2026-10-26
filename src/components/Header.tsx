@@ -106,7 +106,7 @@ export const Header = () => {
               <div className="mt-8 border-t border-border/60 pt-5">
                 <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Conversemos</p>
                 <div className="mb-5 flex items-center gap-2">
-                  <a href="https://instagram.com/asfepa" target="_blank" rel="noopener noreferrer" aria-label="Instagram de ASFEPA" className="flex h-11 w-11 items-center justify-center rounded-full border border-border/70 text-foreground transition-colors hover:border-primary hover:text-primary">
+                  <a href="https://www.instagram.com/apary_cafe86?utm_source=ig_web_button_share_sheet&cplk=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram de ASFEPA" className="flex h-11 w-11 items-center justify-center rounded-full border border-border/70 text-foreground transition-colors hover:border-primary hover:text-primary">
                     <Instagram className="h-5 w-5" />
                   </a>
                   <a href="https://wa.me/51930572244" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp al +51 930 572 244" className="flex h-11 w-11 items-center justify-center rounded-full border border-border/70 transition-colors hover:border-primary">
