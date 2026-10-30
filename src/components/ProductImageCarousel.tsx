@@ -1,20 +1,26 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface ProductPresentation {
+export interface ProductPresentation {
   label: string;
   image: string;
+  fit?: "cover" | "contain";
+  scale?: number;
 }
 
 interface ProductImageCarouselProps {
   productName: string;
   presentations: ProductPresentation[];
   onImageClick?: () => void;
+  imageFit?: "cover" | "contain";
+  imageScale?: number;
 }
 
-export const ProductImageCarousel = ({ productName, presentations, onImageClick }: ProductImageCarouselProps) => {
+export const ProductImageCarousel = ({ productName, presentations, onImageClick, imageFit, imageScale }: ProductImageCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const activePresentation = presentations[activeIndex];
+  const resolvedImageFit = imageFit ?? activePresentation?.fit ?? "contain";
+  const resolvedImageScale = imageScale ?? activePresentation?.scale ?? 1;
   const hasMultiple = presentations.length > 1;
 
   const showPrevious = () => {
@@ -40,7 +46,8 @@ export const ProductImageCarousel = ({ productName, presentations, onImageClick 
             key={activePresentation.image}
             src={activePresentation.image}
             alt={`${productName} — ${activePresentation.label || "presentación"}`}
-            className="h-full w-full animate-fade-in object-contain p-3 drop-shadow-xl sm:p-5"
+            className={`h-full w-full ${resolvedImageFit === "cover" ? "object-cover" : "object-contain p-3 drop-shadow-xl sm:p-5"}`}
+            style={{ transform: resolvedImageScale === 1 ? undefined : `scale(${resolvedImageScale})` }}
           />
         </button>
       ) : (
@@ -48,7 +55,8 @@ export const ProductImageCarousel = ({ productName, presentations, onImageClick 
         key={activePresentation.image}
         src={activePresentation.image}
         alt={`${productName} — ${activePresentation.label || "presentación"}`}
-        className="h-full w-full animate-fade-in object-contain p-3 drop-shadow-xl sm:p-5"
+        className={`h-full w-full ${resolvedImageFit === "cover" ? "object-cover" : "object-contain p-3 drop-shadow-xl sm:p-5"}`}
+        style={{ transform: resolvedImageScale === 1 ? undefined : `scale(${resolvedImageScale})` }}
         />
       )}
 

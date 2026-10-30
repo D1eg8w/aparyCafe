@@ -1,31 +1,34 @@
-import { useState, useEffect } from "react";
-import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { Facebook } from "lucide-react";
 
 // Import CAMPO images
-import g1 from "@/assets/CAMPO/GALERIA1.png";
-import g2 from "@/assets/CAMPO/GALERIA2.png";
-import g3 from "@/assets/CAMPO/GALERIA3.png";
-import g4 from "@/assets/CAMPO/GALERIA4.png";
-import g5 from "@/assets/CAMPO/GALERIA5.png";
-import g6 from "@/assets/CAMPO/GALERIA6.png";
-import g7 from "@/assets/CAMPO/GALERIA7.png";
-import g8 from "@/assets/CAMPO/GALERIA8.png";
-import g9 from "@/assets/CAMPO/GALERIA9.png";
-import g10 from "@/assets/CAMPO/GALERIA10.png";
+import g1 from "@/assets/CAMPO/GALERIA1.webp";
+import g2 from "@/assets/CAMPO/GALERIA2.webp";
+import g3 from "@/assets/CAMPO/GALERIA3.webp";
+import g4 from "@/assets/CAMPO/GALERIA4.webp";
+import g5 from "@/assets/CAMPO/GALERIA5.webp";
+import g6 from "@/assets/CAMPO/GALERIA6.webp";
+import g7 from "@/assets/CAMPO/GALERIA7.webp";
+import g8 from "@/assets/CAMPO/GALERIA8.webp";
+import g9 from "@/assets/CAMPO/GALERIA9.webp";
+import g10 from "@/assets/CAMPO/GALERIA10.webp";
 
 // Import EXI images
-import g11 from "@/assets/EXI/GALERIA11.png";
-import g12 from "@/assets/EXI/GALERIA12.png";
-import g13 from "@/assets/EXI/GALERIA13.png";
-import g14 from "@/assets/EXI/GALERIA14.png";
-import g15 from "@/assets/EXI/GALERIA15.png";
-import g16 from "@/assets/EXI/GALERIA16.png";
-import g17 from "@/assets/EXI/GALERIA17.png";
-import g18 from "@/assets/EXI/GALERIA18.png";
-import g19 from "@/assets/EXI/GALERIA19.png";
-import g20 from "@/assets/EXI/GALERIA20.png";
+import g11 from "@/assets/EXI/GALERIA11.webp";
+import g12 from "@/assets/EXI/GALERIA12.webp";
+import g13 from "@/assets/EXI/GALERIA13.webp";
+import g14 from "@/assets/EXI/GALERIA14.webp";
+import g15 from "@/assets/EXI/GALERIA15.webp";
+import g16 from "@/assets/EXI/GALERIA16.webp";
+import g17 from "@/assets/EXI/GALERIA17.webp";
+import g18 from "@/assets/EXI/GALERIA18.webp";
+import g19 from "@/assets/EXI/GALERIA19.webp";
+import g20 from "@/assets/EXI/GALERIA20.webp";
 
-const galleryImages = [
+type GalleryImage = { src: string; alt: string; category: string };
+
+const facebookPageUrl = "https://www.facebook.com/share/1csBoBsyEW/";
+
+const galleryImages: GalleryImage[] = [
   { src: g1, alt: "Cosecha de café en las montañas", category: "Campo" },
   { src: g2, alt: "Productores de ASFEPA trabajando", category: "Comunidad" },
   { src: g3, alt: "Plantaciones sostenibles", category: "Campo" },
@@ -49,34 +52,6 @@ const galleryImages = [
 ];
 
 export const Galeria = () => {
-  const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (selectedImage !== null) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [selectedImage]);
-
-  const openLightbox = (index: number) => setSelectedImage(index);
-  const closeLightbox = () => setSelectedImage(null);
-  
-  const nextImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage((selectedImage + 1) % galleryImages.length);
-    }
-  };
-  
-  const prevImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage((selectedImage - 1 + galleryImages.length) % galleryImages.length);
-    }
-  };
-
   return (
     <section id="galeria" className="section-padding bg-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,72 +70,58 @@ export const Galeria = () => {
 
         <div className="space-y-6 md:space-y-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 reveal-stagger">
-            {galleryImages.slice(0, 4).map((image, index) => (
-              <GalleryItem key={index} image={image} index={index} onClick={() => openLightbox(index)} />
+            {galleryImages.slice(0, 4).map((image) => (
+              <GalleryItem key={image.src} image={image} />
             ))}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 reveal-stagger">
-            {galleryImages.slice(4, 7).map((image, index) => (
-              <GalleryItem key={index + 4} image={image} index={index + 4} onClick={() => openLightbox(index + 4)} />
+            {galleryImages.slice(4, 7).map((image) => (
+              <GalleryItem key={image.src} image={image} />
             ))}
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 lg:gap-6 reveal-stagger">
-            {galleryImages.slice(7, 12).map((image, index) => (
-              <GalleryItem key={index + 7} image={image} index={index + 7} onClick={() => openLightbox(index + 7)} />
+            {galleryImages.slice(7, 12).map((image) => (
+              <GalleryItem key={image.src} image={image} />
             ))}
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6 reveal-stagger">
-            {galleryImages.slice(12).map((image, index) => (
-              <GalleryItem key={index + 12} image={image} index={index + 12} onClick={() => openLightbox(index + 12)} />
+            {galleryImages.slice(12).map((image) => (
+              <GalleryItem key={image.src} image={image} />
             ))}
           </div>
         </div>
       </div>
 
-      {selectedImage !== null && (
-        <div 
-          className="fixed inset-0 z-[9999] bg-black/98 flex items-center justify-center p-2 sm:p-10 animate-fade-in cursor-zoom-out"
-          onClick={closeLightbox}
-        >
-          {/* Main Image */}
-          <img
-            src={galleryImages[selectedImage].src}
-            alt={galleryImages[selectedImage].alt}
-            className="max-w-full max-h-full object-contain rounded shadow-2xl animate-scale-in"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
     </section>
   );
 };
 
-const GalleryItem = ({ image, index, onClick }: { image: any, index: number, onClick: () => void }) => (
-  <button
-    onClick={onClick}
-    className="group relative overflow-hidden rounded-3xl shadow-soft hover:shadow-elevated transition-all duration-700 card-hover bg-muted/50 border border-border/50 aspect-[4/5] md:aspect-[3/4]"
+const GalleryItem = ({ image }: { image: GalleryImage }) => (
+  <a
+    href={facebookPageUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Ver ${image.alt} en Facebook`}
+    className="group relative block aspect-[4/5] overflow-hidden rounded-3xl border border-border/50 bg-muted/50 shadow-soft transition-all duration-700 hover:shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 md:aspect-[3/4]"
   >
     <img
       src={image.src}
       alt={image.alt}
-      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+      className="h-full w-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
       loading="lazy"
     />
     
-    {/* Professional Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 translate-y-4 group-hover:translate-y-0">
-      <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center mb-4 self-end">
-        <Maximize2 className="w-5 h-5 text-white" />
-      </div>
-      <span className="inline-block px-3 py-1 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-widest mb-3 w-fit">
-        {image.category}
+    <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/35 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+      <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/50 bg-black/25 shadow-lg backdrop-blur-sm">
+        <Facebook className="h-7 w-7 text-white" aria-hidden="true" />
       </span>
-      <p className="text-white text-lg font-bold leading-tight">
-        {image.alt}
-      </p>
+      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent px-5 pb-5 pt-14 text-left text-white">
+        <span className="mb-1 block text-[10px] font-bold uppercase tracking-[0.16em] text-white/80">{image.category} · Facebook</span>
+        <span className="block text-sm font-semibold leading-snug">{image.alt}</span>
+      </span>
     </div>
-  </button>
+  </a>
 );

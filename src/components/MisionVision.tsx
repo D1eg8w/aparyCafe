@@ -106,7 +106,7 @@ export const MisionVision = () => {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 reveal-stagger">
+        <div className="values-stagger grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 reveal-stagger">
           {values.map((value, index) => (
             <div
               key={value.title}

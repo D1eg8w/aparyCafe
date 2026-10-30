@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Leaf, Users, Shield } from "lucide-react";
-import nosotrosImg from "@/assets/nosotros.png";
+import nosotrosImg from "@/assets/EXI/GALERIA17.webp";
 
 export const NosotrosSummary = () => {
   return (

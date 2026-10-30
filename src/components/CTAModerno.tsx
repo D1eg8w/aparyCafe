@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Check, Coffee } from "lucide-react";
-import coffeeBeansImage from "@/assets/coffee-beans.jpg";
+import coffeeBeansImage from "@/assets/coffee-beans.webp";
 import whatsappIcon from "@/assets/whatsapp.svg";
 
 const businessBenefits = [
@@ -44,7 +44,7 @@ export const CTAModerno = () => {
           </div>
 
           <div className="w-full lg:pl-2">
-            <Button size="xl" className="group min-h-[56px] w-full gap-3 bg-[#1E7042] text-white shadow-lg hover:bg-[#185B36]" asChild>
+            <Button size="xl" className="gsap-button group min-h-[56px] w-full gap-3 bg-[#1E7042] text-white shadow-lg hover:bg-[#185B36]" asChild>
               <a href="https://wa.me/51930572244?text=Hola%2C%20quisiera%20consultar%20por%20compras%20de%20caf%C3%A9%20por%20volumen" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
                 <img src={whatsappIcon} alt="" className="h-5 w-5 brightness-0 invert" aria-hidden="true" />
                 Consultar por WhatsApp

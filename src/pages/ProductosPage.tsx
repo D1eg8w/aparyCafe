@@ -4,7 +4,7 @@ import { Productos } from "@/components/Productos";
 import { Footer } from "@/components/Footer";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import productosHero from "@/assets/hero-coffee-mountains.jpg";
+import productosHero from "@/assets/hero-coffee-mountains.webp";
 
 const ProductosPage = () => {
   useEffect(() => {

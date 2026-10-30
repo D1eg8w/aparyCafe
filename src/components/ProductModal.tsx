@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Minus, Plus, ShoppingBag, X } from "lucide-react";
+import { MapPin, Minus, Plus, ShoppingBag, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductImageCarousel } from "./ProductImageCarousel";
 import {
@@ -15,8 +15,6 @@ interface ProductModalProps {
     description: string;
     image: string;
     presentations?: { label: string; image: string }[] | null;
-    price: string;
-    unit: string;
     technicalDetails?: { label: string; value: string }[];
   } | null;
 }
@@ -50,63 +48,66 @@ export const ProductModal = ({ isOpen, onClose, product }: ProductModalProps) =>
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent data-lenis-prevent className="max-w-4xl p-0 border-none bg-background rounded-3xl shadow-elevated max-h-[90vh] overflow-y-auto overscroll-contain">
-        <div className="grid lg:grid-cols-2 min-h-[500px]">
+      <DialogContent data-lenis-prevent className="max-h-[calc(100dvh-1rem)] w-[calc(100%-1rem)] max-w-5xl overflow-y-auto overscroll-contain rounded-[1.25rem] border-border/60 bg-background p-0 shadow-elevated sm:max-h-[92vh] sm:w-[calc(100%-2rem)] sm:rounded-[1.75rem]">
+        <div className="grid lg:grid-cols-[0.92fr_1.08fr]">
           {/* Image Side */}
-          <div className="relative h-72 bg-muted/20 p-5 lg:h-full lg:min-h-[500px]">
+          <div className="relative h-64 bg-gradient-to-br from-muted/30 via-background to-primary/5 p-5 sm:h-80 lg:sticky lg:top-0 lg:h-full lg:min-h-[620px]">
             <ProductImageCarousel
               key={product.name}
               productName={product.name}
               presentations={product.presentations ?? [{ label: "", image: product.image }]}
+              imageFit="contain"
+              imageScale={1}
             />
-            <button 
-              onClick={onClose}
-              className="absolute top-4 left-4 lg:hidden w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-foreground shadow-sm"
-            >
-              <X className="w-5 h-5" />
-            </button>
           </div>
 
           {/* Content Side */}
-          <div className="p-8 lg:p-12 flex flex-col">
+          <div className="flex flex-col p-6 sm:p-8 lg:p-10">
             <div className="flex-1 space-y-6">
-              <div>
-                <span className="text-primary font-bold text-sm tracking-wider uppercase">
-                  Detalles del Producto
+              <div className="pr-8">
+                <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+                  <Sparkles className="h-3.5 w-3.5" /> APARY Café
                 </span>
-                <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mt-2">
+                <h2 className="mt-2 font-heading text-3xl font-bold leading-tight text-foreground lg:text-4xl">
                   {product.name}
                 </h2>
               </div>
 
               <div className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm leading-7 text-muted-foreground sm:text-base">
                   {product.description}
                 </p>
-                <div className="h-px bg-border w-full" />
+                <p className="flex items-center gap-2 text-xs font-medium text-foreground/75">
+                  <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                  Felipe Pinglo Alva, Luyando · Huánuco, Perú
+                </p>
               </div>
 
               {product.technicalDetails && product.technicalDetails.length > 0 && (
-                <div className="space-y-3">
-                  <h3 className="text-sm font-bold text-foreground uppercase tracking-tight">Ficha Técnica</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 bg-muted/30 p-4 rounded-xl border border-border">
+                <div className="space-y-3.5">
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">Lo esencial</h3>
+                  <div className="grid grid-cols-1 gap-3 rounded-2xl border border-border/70 bg-muted/25 p-4 sm:grid-cols-2">
                     {product.technicalDetails.map((detail, idx) => (
-                      <div key={idx} className="flex flex-col">
-                        <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">{detail.label}</span>
-                        <span className="text-sm text-foreground font-medium">{detail.value}</span>
+                      <div key={idx} className="space-y-1">
+                        <span className="block text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground">{detail.label}</span>
+                        <span className="block text-xs font-medium leading-5 text-foreground sm:text-sm">{detail.value}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="h-px bg-border w-full mt-4" />
                 </div>
               )}
 
+              <div className="rounded-2xl bg-primary/5 px-4 py-3.5">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Pedido</p>
+                <p className="mt-0.5 text-sm font-medium leading-6 text-foreground">Consulta las presentaciones disponibles y coordina el envío por WhatsApp.</p>
+              </div>
+
               <div className="space-y-4">
-                <label className="text-sm font-bold text-foreground uppercase tracking-tight">
+                <label className="text-xs font-semibold uppercase tracking-[0.14em] text-foreground">
                   Cantidad a solicitar
                 </label>
-                <div className="flex items-center gap-6">
-                  <div className="flex items-center bg-muted/50 rounded-2xl p-1 border border-border">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center rounded-2xl border border-border bg-muted/50 p-1">
                     <Button
                       variant="ghost"
                       size="icon"
@@ -132,14 +133,14 @@ export const ProductModal = ({ isOpen, onClose, product }: ProductModalProps) =>
               </div>
             </div>
 
-            <div className="mt-8 md:mt-12 space-y-3">
+            <div className="mt-7 space-y-3 border-t border-border/70 pt-5">
               <Button 
                 onClick={handleWhatsAppOrder} 
                 size="lg"
                 className="w-full gap-3 shadow-glow h-14"
               >
                 <ShoppingBag className="w-5 h-5" />
-                Realizar Pedido por WhatsApp
+                Consultar y pedir por WhatsApp
               </Button>
               <Button 
                 variant="outline" 
@@ -147,7 +148,7 @@ export const ProductModal = ({ isOpen, onClose, product }: ProductModalProps) =>
                 onClick={onClose} 
                 className="w-full h-14 border-2"
               >
-                Cerrar Ventana
+                Seguir viendo productos
               </Button>
             </div>
           </div>

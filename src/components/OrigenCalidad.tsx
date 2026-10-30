@@ -1,5 +1,4 @@
 import { CheckCircle2, Leaf, MapPin } from "lucide-react";
-import campoImage from "@/assets/CAMPO/GALERIA1.png";
 
 const proofPoints = [
   {
@@ -31,24 +30,15 @@ export const OrigenCalidad = () => (
         </h2>
       </div>
 
-      <div className="relative mx-auto h-[560px] max-w-6xl overflow-hidden rounded-2xl shadow-[0_14px_40px_rgba(48,35,22,0.12)] sm:h-[540px] sm:rounded-3xl lg:h-[560px]">
-        <img
-          src={campoImage}
-          alt="Productores seleccionando café en el campo"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" aria-hidden="true" />
-
-        <div className="reveal-stagger absolute inset-x-3 bottom-3 grid gap-2.5 sm:inset-x-6 sm:bottom-6 sm:grid-cols-3 sm:gap-4 lg:inset-x-8 lg:bottom-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="reveal-stagger grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
           {proofPoints.map(({ icon: Icon, title, description }) => (
-            <article key={title} className="group flex items-center gap-3 rounded-xl border border-white/75 bg-white/[0.86] p-3 text-left text-stone-800 shadow-[0_8px_24px_rgba(0,0,0,0.12)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white/[0.97] hover:shadow-[0_14px_32px_rgba(0,0,0,0.18)] motion-reduce:transition-none sm:flex-col sm:gap-0 sm:rounded-2xl sm:p-4 sm:text-center lg:p-5">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1E3A2B]/[0.08] text-[#1E3A2B] transition-colors duration-300 group-hover:bg-[#1E3A2B]/[0.12] sm:mb-3 sm:h-11 sm:w-11">
-              <Icon className="h-6 w-6" aria-hidden="true" />
-            </div>
-            <div>
-              <h3 className="mb-1 font-heading text-base font-semibold leading-tight text-[#221711] sm:mb-2 sm:text-lg lg:text-xl">{title}</h3>
-              <p className="text-xs leading-snug text-stone-700 sm:text-sm sm:leading-relaxed">{description}</p>
-            </div>
+            <article key={title} className="group relative flex min-h-56 flex-col items-center rounded-2xl border border-[#1E3A2B]/10 bg-white p-6 text-center shadow-[0_8px_24px_rgba(48,35,22,0.06)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#1E3A2B]/20 hover:shadow-[0_18px_36px_rgba(48,35,22,0.12)] motion-reduce:transition-none sm:min-h-64 sm:p-8">
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1E3A2B]/[0.07] text-[#1E3A2B] transition-all duration-300 group-hover:rotate-3 group-hover:bg-[#1E3A2B]/[0.12] motion-reduce:transition-none">
+                <Icon className="h-7 w-7" aria-hidden="true" />
+              </div>
+              <h3 className="mb-3 font-heading text-lg font-semibold leading-tight text-[#221711] sm:text-xl">{title}</h3>
+              <p className="max-w-sm text-sm leading-relaxed text-stone-600">{description}</p>
             </article>
           ))}
         </div>

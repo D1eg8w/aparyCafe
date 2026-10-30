@@ -9,7 +9,7 @@ export const WhatsAppButton = () => {
       href={`https://wa.me/${whatsappNumber}?text=${defaultMessage}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-[#25D366] rounded-full shadow-elevated transition-all duration-300 hover:scale-110 active:scale-95 animate-pulse-green group"
+      className="fixed bottom-[calc(1rem_+_env(safe-area-inset-bottom))] right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-elevated transition-all duration-300 hover:scale-110 active:scale-95 animate-pulse-green group sm:bottom-6 sm:right-6 sm:h-16 sm:w-16"
       aria-label="Contactar por WhatsApp"
     >
       <img 

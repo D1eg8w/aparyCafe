@@ -2,42 +2,62 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { ProductImageCarousel } from "./ProductImageCarousel";
+import type { ProductPresentation } from "./ProductImageCarousel";
 
-import imgPergamino from "@/assets/PRODUCTOS/CAFEPERGAMINOSECO.png";
-import imgOroVerde from "@/assets/PRODUCTOS/CAFEOROVERDE.png";
-import imgTostadoMolido from "@/assets/PRODUCTOS/CAFETOSTADOYMOLIDO.png";
-import imgPergaminoSaco from "@/assets/PRODUCTOS/cafepergaminosinfondo.png";
-import imgOroSaco from "@/assets/PRODUCTOS/cafeorosinfondo.png";
+import imgPergamino from "@/assets/PRODUCTOS/CAFEPERGAMINOSECO.webp";
+import imgPergaminoSaco from "@/assets/PRODUCTOS/cafepergaminosinfondo.webp";
+import imgOroVerde from "@/assets/PRODUCTOS/CAFEOROVERDE.webp";
+import imgOroSaco from "@/assets/PRODUCTOS/cafeorosinfondo.webp";
+import imgTostadoMolido250g from "@/assets/PRODUCTOS/cafe-tostado-molido-apary-250g.webp";
+import imgPergaminoSacosReal from "@/assets/PRODUCTOS/pergamino-sacos-asfepa.webp";
+import imgPergaminoSecado from "@/assets/PRODUCTOS/pergamino-secado-solar-asfepa.webp";
+import imgOroVerdeSeleccion from "@/assets/PRODUCTOS/oro-verde-seleccion-asfepa.webp";
 
-const featuredProducts = [
+interface FeaturedProduct {
+  id: number;
+  name: string;
+  productName: string;
+  description: string;
+  highlight: string;
+  image: string;
+  presentations: ProductPresentation[];
+}
+
+const featuredProducts: FeaturedProduct[] = [
   {
     id: 1,
     name: "Café Tostado y Molido",
-    productName: "Café Tostado y Molido 1KG",
-    description: "Presentación lista para venta directa al consumidor, ideal para ferias y puntos de comercio local.",
-    image: imgTostadoMolido,
-    presentations: [{ label: "", image: imgTostadoMolido }],
+    productName: "Café Tostado y Molido",
+    description: "Recién molido bajo pedido, con dulzor natural y notas de jazmín, frutas tropicales y chocolate suave.",
+    highlight: "Molienda a elección",
+    image: imgTostadoMolido250g,
+    presentations: [
+      { label: "Empaque APARY de 250 g", image: imgTostadoMolido250g, scale: 1.25 },
+    ],
   },
   {
     id: 2,
     name: "Café Oro Verde",
     productName: "Café Oro Verde",
-    description: "Grano de alta calidad listo para el proceso de tostado, es el resultado del trabajo cuidadoso de nuestros productores.",
+    description: "Grano verde seleccionado por tamaño y densidad, preparado para que cada tostador desarrolle su perfil.",
+    highlight: "Para tostadores",
     image: imgOroVerde,
     presentations: [
-      { label: "Presentación en saco", image: imgOroSaco },
-      { label: "", image: imgOroVerde },
+      { label: "Selección del café oro verde", image: imgOroVerdeSeleccion, fit: "cover" },
+      { label: "Presentación en saco", image: imgOroSaco, scale: 1.28 },
     ],
   },
   {
     id: 3,
     name: "Café Pergamino Seco",
     productName: "Café Pergamino",
-    description: "Café producido con buenas prácticas agrícolas y procesos de calidad en cosecha y postcosecha.",
+    description: "Cosecha selectiva de nuestras familias productoras, fermentada cuidadosamente y secada al sol.",
+    highlight: "Cosecha selectiva",
     image: imgPergamino,
     presentations: [
+      { label: "Secado solar del café", image: imgPergaminoSecado, fit: "cover" },
+      { label: "Café pergamino en sacos", image: imgPergaminoSacosReal, fit: "cover" },
       { label: "Presentación en saco", image: imgPergaminoSaco },
-      { label: "", image: imgPergamino },
     ],
   }
 ];
@@ -56,8 +76,8 @@ export const ProductosSummary = () => {
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground">
               Productos Destacados
             </h2>
-            <p className="text-muted-foreground mt-4 text-lg">
-              Descubre la esencia de nuestra tierra en cada grano. Procesos artesanales para un sabor inigualable.
+            <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+              Café cultivado por nuestras familias en Luyando, Huánuco, con calidad y cuidado en cada etapa.
             </p>
           </div>
           <Button asChild variant="ghost" className="group text-primary font-semibold reveal">
@@ -68,35 +88,39 @@ export const ProductosSummary = () => {
           </Button>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 reveal-stagger">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 reveal-stagger">
           {featuredProducts.map((product, index) => (
             <div 
               key={product.id}
-              className="group bg-background rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-500 card-hover"
+              className="group flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-border/70 bg-background shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-muted/20 p-4 sm:p-6">
+              <div className="relative aspect-[1.15/1] overflow-hidden bg-gradient-to-br from-muted/30 via-background to-primary/5 p-4 sm:p-6">
                 <ProductImageCarousel
                   productName={product.name}
                   presentations={product.presentations ?? [{ label: "", image: product.image }]}
                   onImageClick={() => navigate(`/productos?producto=${encodeURIComponent(product.productName)}`)}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none" />
+                <span className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/70 bg-background/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-primary shadow-sm backdrop-blur">
+                  {product.highlight}
+                </span>
               </div>
-              <div className="p-6">
-                <h3 className="font-heading text-xl font-bold text-foreground mb-2">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 className="mb-2 font-heading text-xl font-bold text-foreground">
                   {product.name}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                <p className="mb-5 line-clamp-3 text-sm leading-6 text-muted-foreground">
                   {product.description}
                 </p>
-                <div className="flex items-center justify-center mt-auto pt-4">
-                  <Button size="sm" variant="default" className="w-full shadow-glow" asChild>
-                    <a href={`https://wa.me/51930572244?text=¡Hola APARY!%20Me%20interesa%20adquirir%20el%20producto:%20${encodeURIComponent(product.name)}`} target="_blank" rel="noopener noreferrer">
-                      Adquirir por WhatsApp
-                    </a>
-                  </Button>
-                </div>
+                <Button
+                  size="sm"
+                  variant="default"
+                  className="gsap-button mt-auto w-full gap-2 rounded-full"
+                  onClick={() => navigate(`/productos?producto=${encodeURIComponent(product.productName)}`)}
+                >
+                  Ver producto y consultar <ArrowRight className="h-4 w-4" />
+                </Button>
               </div>
             </div>
           ))}

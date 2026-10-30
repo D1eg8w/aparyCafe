@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Check, ShoppingBag } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductModal } from "./ProductModal";
 import { ProductImageCarousel } from "./ProductImageCarousel";
@@ -60,32 +60,31 @@ export const Productos = () => {
   };
 
   return (
-    <section id="productos" className="bg-card px-0 pb-12 pt-8 overflow-hidden sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-14">
+    <section id="productos" className="bg-card px-0 pb-16 pt-10 overflow-hidden sm:pb-20 sm:pt-14 lg:pb-24 lg:pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 lg:mb-12 reveal">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Nuestros Productos
+        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12 lg:mb-14 reveal">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            Del origen a tu taza <span aria-hidden="true">·</span> APARY Café
           </span>
-          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground mb-4 lg:mb-6">
-            Café de Especialidad APARY
+          <h2 className="mb-4 font-heading text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+            Café de especialidad, hecho en Huánuco
           </h2>
-          <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
-            Ofrecemos diferentes presentaciones de nuestro café, desde el grano pergamino
-            hasta el café tostado y molido listo para disfrutar.
+          <p className="mx-auto max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+            Conoce cada presentación y elige la que mejor acompaña tu forma de disfrutar o trabajar el café.
           </p>
         </div>
 
         {/* Products Grid */}
-        <div ref={productsGridRef} className="products-grid grid grid-cols-1 sm:grid-cols-2 lg:max-w-4xl lg:mx-auto gap-4 sm:gap-6 lg:gap-8">
+        <div ref={productsGridRef} className="products-grid grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 xl:gap-8">
           {products.map((product) => (
             <div
               key={product.name}
               data-product-name={product.name}
-              className="group bg-background rounded-2xl overflow-hidden shadow-soft hover:shadow-elevated transition-all duration-300 card-hover"
+              className="group flex h-full flex-col overflow-hidden rounded-[1.4rem] border border-border/70 bg-background shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
             >
               {/* Image */}
-              <div className="relative h-48 overflow-hidden bg-muted/20 p-3 sm:h-56 sm:p-4">
+              <div className="relative h-60 overflow-hidden bg-gradient-to-br from-muted/30 via-background to-primary/5 p-3 sm:h-72 sm:p-4">
                 <ProductImageCarousel
                   key={product.name}
                   productName={product.name}
@@ -93,50 +92,48 @@ export const Productos = () => {
                   onImageClick={() => handleOpenModal(product)}
                 />
 
-                {/* Badge */}
-                <div className="pointer-events-none absolute top-3 left-3 sm:top-4 sm:left-4">
-                  <span className="px-2 py-1 sm:px-3 rounded-full bg-leaf-light text-cream text-xs font-semibold shadow-soft">
-                    {product.badge}
-                  </span>
-                </div>
-
-                {/* Removed Price Section */}
               </div>
 
               {/* Content */}
-              <div className="p-4 sm:p-6">
-                <h3 className="font-heading text-lg sm:text-xl font-bold text-foreground mb-2">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 className="mb-2 font-heading text-xl font-bold leading-tight text-foreground sm:text-2xl">
                   {product.name}
                 </h3>
-                <p className="text-muted-foreground text-xs sm:text-sm mb-4 leading-relaxed line-clamp-2">
+                <p className="mb-5 line-clamp-3 text-sm leading-6 text-muted-foreground">
                   {product.description}
                 </p>
 
-                {/* Features */}
-                <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
+                <ul className="mb-6 flex flex-wrap gap-2">
                   {product.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-xs sm:text-sm text-foreground">
-                      <Check className="w-3 h-3 sm:w-4 sm:h-4 text-leaf-light flex-shrink-0" />
-                      <span>{feature}</span>
+                    <li key={feature} className="rounded-full bg-muted/70 px-3 py-1.5 text-[11px] font-medium text-foreground/80">
+                      {feature}
                     </li>
                   ))}
                 </ul>
 
-                <Button
-                  variant="default"
-                  className="w-full gap-2"
-                  onClick={() => handleOpenModal(product)}
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  Adquirir
-                </Button>
+                <div className="mt-auto flex flex-col gap-4 border-t border-border/70 pt-4 md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Pedidos</p>
+                    <p className="font-heading text-lg font-bold text-foreground">Solicita información</p>
+                    <p className="text-[11px] text-muted-foreground">Presentaciones y disponibilidad</p>
+                  </div>
+
+                  <Button
+                    variant="default"
+                    className="gsap-button w-full gap-2 rounded-full px-4 md:w-auto md:shrink-0"
+                    onClick={() => handleOpenModal(product)}
+                    aria-label={`Ver detalles y adquirir ${product.name}`}
+                  >
+                    Consultar <ArrowUpRight className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-8 lg:mt-12">
+        <div className="mt-10 rounded-2xl border border-border/70 bg-background/70 px-5 py-7 text-center sm:mt-14 sm:px-8">
           <p className="text-muted-foreground mb-4 text-sm sm:text-base">
             ¿Interesado en compras al por mayor o exportación?
           </p>

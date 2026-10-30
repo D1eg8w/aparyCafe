@@ -1,6 +1,6 @@
 import { ArrowUp, Facebook, Instagram, Leaf, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import logoApary from "@/assets/logo-apary.png";
+import logoApary from "@/assets/logo-apary.webp";
 import whatsappIcon from "@/assets/whatsapp.svg";
 
 const footerLinks = {
@@ -23,7 +23,7 @@ const contactLinks = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "https://www.facebook.com/1apary", label: "Facebook" },
+  { icon: Facebook, href: "https://www.facebook.com/share/1csBoBsyEW/", label: "Facebook" },
   { icon: Instagram, href: "https://www.instagram.com/apary_cafe86?utm_source=ig_web_button_share_sheet&cplk=ZDNlZDc0MzIxNw==", label: "Instagram" },
   { icon: whatsappIcon, href: "https://wa.me/51930572244", label: "WhatsApp", isImage: true },
 ];

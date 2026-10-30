@@ -1,6 +1,6 @@
 import { Users, Award, Handshake, Building2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import coffeeBeans from "@/assets/nosotros.png";
+import coffeeBeans from "@/assets/CAMPO/GALERIA4.webp";
 
 const timelineItems = [
   {
@@ -32,6 +32,7 @@ const timelineItems = [
 export const Historia = () => {
   const timelineRef = useRef<HTMLDivElement>(null);
   const [timelineProgress, setTimelineProgress] = useState(0);
+  const [timelineStart, setTimelineStart] = useState(0);
   const [timelineHeight, setTimelineHeight] = useState(0);
   const [milestoneThresholds, setMilestoneThresholds] = useState<number[]>([]);
 
@@ -61,6 +62,7 @@ export const Historia = () => {
         const firstCenter = timelineBounds.top + centers[0];
         const progress = Math.max(0, Math.min(1, (trigger - firstCenter) / distance));
         setTimelineProgress(progress);
+        setTimelineStart(centers[0]);
         setTimelineHeight(distance);
         const thresholds = centers.map((center) => (center - centers[0]) / distance);
         setMilestoneThresholds((current) =>
@@ -101,74 +103,74 @@ export const Historia = () => {
           </p>
         </div>
 
-        {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-          {/* Story Content */}
-          <div className="order-2 lg:order-1 space-y-6 relative reveal">
-            <div className="relative rounded-2xl overflow-hidden shadow-elevated">
+        <div className="space-y-16 lg:space-y-24">
+          {/* Motivation: image and story side by side */}
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+            <figure className="relative mx-auto w-full max-w-[24rem] overflow-hidden rounded-3xl border border-border/60 bg-muted/20 shadow-elevated reveal">
               <img
                 src={coffeeBeans}
-                alt="Granos de café artesanal ASFEPA"
-                className="w-full aspect-[4/3] object-cover"
+                alt="Niños en el campo con cerezas de café y un empaque APARY"
+                className="block h-auto w-full object-contain object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-coffee-dark/40 to-transparent" />
-            </div>
-            
-            {/* Story Text */}
-            <div className="bg-background rounded-2xl p-6 lg:p-8 shadow-soft relative z-10">
-              <h3 className="font-heading text-xl font-bold text-foreground mb-4">
+            </figure>
+
+            <div className="rounded-3xl border border-border/70 bg-background p-6 shadow-soft sm:p-8 lg:p-10 reveal">
+              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.16em] text-primary">Quiénes somos</span>
+              <h3 className="mb-5 font-heading text-2xl font-bold text-foreground sm:text-3xl">
                 Nuestra Motivación
               </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
+              <p className="mb-4 leading-relaxed text-muted-foreground">
                 Durante años, las familias agricultoras trabajaron de forma independiente, enfrentando 
                 dificultades como la falta de asistencia técnica especializada, la limitada articulación 
                 al mercado, bajos precios en la venta de sus productos y escasa capacidad para acceder 
                 a proyectos o programas de financiamiento.
               </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
+              <p className="mb-4 leading-relaxed text-muted-foreground">
                 Con la necesidad de tener mejores y mayores accesos a comercializar de manera colectiva, 
                 donde pudieran trabajar como grupo de socios y apuntar como conjunto colectivo, los 
                 productores tomaron la decisión de formar una asociación basada en la unidad, solidaridad, 
                 sostenibilidad y calidad productiva.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="leading-relaxed text-muted-foreground">
                 Desde su creación, ASFEPA ha centrado su labor en fortalecer las capacidades técnicas 
                 y organizativas de sus socios, promoviendo una producción responsable y sostenible, 
                 orientada al mercado y enfocada principalmente en el cultivo de café de calidad y 
                 especialidad bajo la marca <strong className="text-primary">APARY</strong>.
               </p>
             </div>
-            
-            {/* Decorative Element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-leaf-light/20 rounded-full blur-3xl z-0" />
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary/20 rounded-full blur-2xl z-0" />
           </div>
 
-          {/* Timeline */}
-          <div ref={timelineRef} className="relative order-1 lg:order-2 space-y-14 sm:space-y-20 lg:space-y-24 reveal">
-            <div aria-hidden="true" className="absolute left-[23px] top-6 w-0.5 rounded-full bg-border" style={{ height: timelineHeight }} />
+          {/* Alternating timeline */}
+          <div>
+            <div className="mb-8 text-center sm:mb-10 reveal">
+              <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.16em] text-primary">Nuestro recorrido</span>
+              <h3 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">Una historia construida en comunidad</h3>
+            </div>
+            <div ref={timelineRef} className="relative grid gap-y-8 sm:gap-y-10 lg:gap-y-12">
+            <div aria-hidden="true" className="absolute left-[19px] top-0 w-0.5 rounded-full bg-border sm:left-[23px] lg:left-1/2 lg:-ml-px" style={{ top: timelineStart, height: timelineHeight }} />
             <div
               aria-hidden="true"
-              className="absolute left-[23px] top-6 w-0.5 origin-top rounded-full bg-gradient-to-b from-leaf-light to-primary transition-transform duration-150 ease-out"
-              style={{ height: timelineHeight, transform: `scaleY(${timelineProgress})` }}
+              className="absolute left-[19px] w-0.5 origin-top rounded-full bg-gradient-to-b from-leaf-light to-primary transition-transform duration-150 ease-out sm:left-[23px] lg:left-1/2 lg:-ml-px"
+              style={{ top: timelineStart, height: timelineHeight, transform: `scaleY(${timelineProgress})` }}
             />
-            {timelineItems.map((item, index) => (
+            {timelineItems.map((item, index) => {
+              const isLeft = index % 2 === 0;
+              const isVisible = timelineProgress >= (milestoneThresholds[index] ?? 1) && timelineProgress > 0;
+              return (
               <article
                 key={`${item.year}-${item.title}`}
                 data-timeline-item
-                className={`relative flex min-h-[220px] gap-4 transition-[opacity,transform,filter] duration-700 ease-out sm:min-h-[240px] ${timelineProgress >= (milestoneThresholds[index] ?? 1) && timelineProgress > 0 ? "translate-y-0 opacity-100 blur-0" : "translate-y-6 opacity-0 blur-sm"}`}
+                className={`relative grid grid-cols-[40px_minmax(0,1fr)] items-center gap-x-3 transition-[opacity,transform,filter] duration-700 ease-out sm:grid-cols-[48px_minmax(0,1fr)] sm:gap-x-4 lg:grid-cols-[minmax(0,1fr)_48px_minmax(0,1fr)] lg:gap-x-7 ${isVisible ? "translate-y-0 opacity-100 blur-0" : "translate-y-6 opacity-0 blur-sm"}`}
               >
-                {/* Icon */}
                 <div
                   data-timeline-marker
-                  className={`relative z-10 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full transition-all duration-500 ${timelineProgress >= (milestoneThresholds[index] ?? 1) && timelineProgress > 0 ? "bg-gradient-to-br from-leaf-dark to-leaf-light text-cream shadow-glow scale-100" : "scale-90 border border-border bg-muted text-muted-foreground shadow-none"}`}
+                  className={`relative z-10 col-start-1 row-start-1 flex h-10 w-10 items-center justify-center justify-self-center rounded-full transition-all duration-500 sm:h-12 sm:w-12 lg:col-start-2 ${isVisible ? "scale-100 bg-gradient-to-br from-leaf-dark to-leaf-light text-cream shadow-glow" : "scale-90 border border-border bg-muted text-muted-foreground shadow-none"}`}
                 >
-                  <item.icon className={`w-5 h-5 ${timelineProgress >= (milestoneThresholds[index] ?? 1) && timelineProgress > 0 ? "text-cream" : "text-muted-foreground"}`} />
+                  <item.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${isVisible ? "text-cream" : "text-muted-foreground"}`} />
                 </div>
 
-                {/* Content */}
-                <div className={`mb-2 flex-1 rounded-2xl border p-5 shadow-soft transition-all duration-500 sm:p-6 ${timelineProgress >= (milestoneThresholds[index] ?? 1) && timelineProgress > 0 ? "border-primary/20 bg-background shadow-elevated" : "border-border/50 bg-background/70 shadow-none"}`}>
-                  <div className="flex items-center gap-3 mb-2">
+                <div className={`col-start-2 row-start-1 rounded-2xl border p-4 shadow-soft transition-all duration-500 sm:p-5 ${isLeft ? "lg:col-start-1 lg:text-right" : "lg:col-start-3 lg:text-left"} ${isVisible ? "border-primary/20 bg-background shadow-elevated" : "border-border/50 bg-background/70 shadow-none"}`}>
+                  <div className={`mb-2 flex items-center gap-3 ${isLeft ? "lg:flex-row-reverse" : ""}`}>
                     <span className="font-heading text-2xl font-bold text-primary">
                       {item.year}
                     </span>
@@ -182,7 +184,9 @@ export const Historia = () => {
                   </p>
                 </div>
               </article>
-            ))}
+              );
+            })}
+            </div>
           </div>
         </div>
       </div>

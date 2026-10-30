@@ -4,7 +4,7 @@ import { Contacto } from "@/components/Contacto";
 import { Footer } from "@/components/Footer";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import contactoHero from "@/assets/CONTACTANOS.jpg";
+import contactoHero from "@/assets/CONTACTANOS.webp";
 
 const ContactoPage = () => {
   useEffect(() => {

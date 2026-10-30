@@ -1,7 +1,7 @@
 import { Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/FONDOPAGINA.png";
+import heroImage from "@/assets/FONDOPAGINA-HERO.webp";
 import { useEffect, useRef, useState } from "react";
 
 const AnimatedNumber = ({ target, suffix = "", isActive }: { target: number; suffix?: string; isActive: boolean }) => {
@@ -62,6 +62,9 @@ export const Hero = () => {
         <img
           src={heroImage}
           alt="Plantaciones de café en las alturas de Huánuco - Perú"
+          width={1920}
+          height={1158}
+          fetchPriority="high"
           className="cinematic-hero-image block h-auto w-full"
         />
       </section>
@@ -69,7 +72,7 @@ export const Hero = () => {
       {/* Unified introduction and stats */}
       <section className="border-b border-border bg-background py-10 sm:py-14 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center reveal">
+          <div className="hero-intro mx-auto max-w-4xl text-center">
             <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/10 bg-primary/5 px-3 py-1.5 sm:gap-2 sm:px-4 sm:py-2">
               <Leaf className="h-3.5 w-3.5 text-primary sm:h-4 sm:w-4" />
               <span className="text-[10px] font-bold uppercase tracking-wider text-primary sm:text-sm">
@@ -84,10 +87,10 @@ export const Hero = () => {
             </p>
 
             <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:mt-9 sm:flex-row sm:items-center sm:gap-4">
-              <Button size="xl" className="w-full py-6 text-base shadow-glow sm:w-auto sm:py-7" asChild>
+              <Button size="xl" className="gsap-button w-full py-6 text-base shadow-glow sm:w-auto sm:py-7" asChild>
                 <Link to="/productos">Explorar cafés</Link>
               </Button>
-              <Button variant="outline" size="xl" className="w-full border-2 py-6 text-base sm:w-auto sm:py-7" asChild>
+              <Button variant="outline" size="xl" className="gsap-button w-full border-2 py-6 text-base sm:w-auto sm:py-7" asChild>
                 <Link to="/nosotros">Conocer a ASFEPA</Link>
               </Button>
             </div>

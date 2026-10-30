@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import logoApary from "@/assets/logo-apary.png";
+import logoApary from "@/assets/logo-apary.webp";
 
 export const Preloader = ({ onFadeOut }: { onFadeOut?: () => void }) => {
   const [isVisible, setIsVisible] = useState(true);

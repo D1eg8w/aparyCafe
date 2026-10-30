@@ -10,7 +10,7 @@ import {
   SheetHeader,
 } from "@/components/ui/sheet";
 import { navItems } from "@/data/navigation";
-import logoApary from "@/assets/logo-apary.png";
+import logoApary from "@/assets/logo-apary.webp";
 import whatsappIcon from "@/assets/whatsapp.svg";
 
 export const Header = () => {

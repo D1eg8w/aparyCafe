@@ -1,4 +1,4 @@
-import homeApary from "@/assets/homeapary.jpeg";
+import homeApary from "@/assets/homeapary.webp";
 
 interface PageHeroProps {
   title: string;
@@ -15,7 +15,7 @@ export const PageHero = ({ title, subtitle, backgroundImage, compact = false }: 
         <img 
           src={backgroundImage || homeApary} 
           alt={title} 
-          className="w-full h-full object-cover reveal object-center"
+          className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/40" />
       </div>
