@@ -10,7 +10,7 @@ const inquiryTypes = [
   { label: "Visitas / alianzas", icon: Sprout },
 ];
 
-const mapSearchUrl = "https://www.google.com/maps/search/?api=1&query=Centro+Poblado+Felipe+Pinglo+Alva%2C+Luyando%2C+Hu%C3%A1nuco%2C+Per%C3%BA";
+const mapSearchUrl = "https://maps.app.goo.gl/tMXCLfgzrcDzLM9m6";
 const whatsappUrl = "https://wa.me/51930572244";
 const whatsappMessage = "Hola, quisiera consultar por los cafés APARY.";
 
@@ -172,24 +172,35 @@ export const Contacto = () => {
               </div>
             </div>
 
-            <div className="reveal overflow-hidden rounded-3xl border border-[#1E5B2B]/20 bg-[#1E3A2B] p-2 shadow-elevated">
-              <div className="relative h-64 overflow-hidden rounded-[1.25rem] bg-[#E7E2D8] sm:h-72">
+            <a
+              href={mapSearchUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir la ubicación de la Asociación Agrosostenible de FPA en Google Maps"
+              className="reveal group block overflow-hidden rounded-2xl border border-border/60 bg-white shadow-soft transition-shadow hover:shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              <div className="relative h-80 overflow-hidden bg-[#E7E2D8] sm:h-96 lg:h-[28rem]">
                 <iframe
-                  src="https://maps.google.com/maps?q=Felipe%20Pinglo%20Alva%2C%20Luyando%2C%20Huanuco%2C%20Peru&z=13&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d125968.8516976154!2d-75.95483144311797!3d-9.375090488752035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sasociaci%C3%B3n%20agrosostenible%20de%20fpa!5e0!3m2!1ses!2spe!4v1793479790614!5m2!1ses!2spe"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Mapa del Centro Poblado Felipe Pinglo Alva, Luyando, Huánuco"
-                  className="h-full w-full"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="Mapa de la Asociación Agrosostenible de FPA"
+                  className="pointer-events-none h-full w-full"
                 />
-                <div className="pointer-events-none absolute left-3 top-3 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-2 text-xs font-semibold text-[#1E3A2B] shadow-md">
-                  <MapPin className="h-4 w-4 text-primary" aria-hidden="true" /> Origen APARY · Luyando
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/55 via-black/15 to-transparent px-4 pb-4 pt-12 text-white sm:px-5 sm:pb-5">
+                  <span className="inline-flex items-center gap-2 text-sm font-semibold drop-shadow-sm">
+                    <MapPin className="h-4 w-4" aria-hidden="true" /> Asociación Agrosostenible de FPA
+                  </span>
+                  <span className="shrink-0 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-[#1E3A2B] shadow-sm transition-colors group-hover:bg-white">
+                    Abrir en Maps
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
